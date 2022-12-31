@@ -27,7 +27,15 @@
 }
 
 .home-image {
-    max-width: 2000px;
+    max-width: 1169px;
     max-height: 1000px;
 
+}
+
+.senta-row {
+    margin: 5px;
+}
+
+.senta-button {
+    margin: 5px;
 }

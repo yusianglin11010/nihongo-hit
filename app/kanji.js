@@ -29,11 +29,13 @@ function checkAnswer(e) {
 }
 
 
-function pickQuestion() {
-    question = document.getElementById("kanji-question")
-    randomElement = kanjiList[Math.floor(Math.random() * kanjiList.length)]
-    question.textContent = randomElement
-    document.getElementById("submit-answer").value = ""
+function pickQuestion(e) {
+    if (e.key === "Enter" || e.key === " "){
+        question = document.getElementById("kanji-question")
+        randomElement = kanjiList[Math.floor(Math.random() * kanjiList.length)]
+        question.textContent = randomElement
+        document.getElementById("submit-answer").value = ""
+    }
 }
 
 document.getElementById("submit-answer").addEventListener("input", checkAnswer)
