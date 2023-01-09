@@ -1,19 +1,18 @@
-// TODO: load data from Google sheet
-let dict = {
-    "何": "なに", 
-    "誰": "だれ",
-    "私":"わたし",
-    "貴方":"あなた",
-    "食べ":"たべ",
-    "旅行":"りょうこ",
-    "仕事":"しごと",
-}
-
+let dict = {}
 let kanjiList = []
 
-for (const [key, _] of Object.entries(dict)){
-    kanjiList.push(key);
+async function createQuestion() {
+    await axios.get('http://localhost:8080/kanji-question')
+    .then(function(response, data) {
+        dict = response.data["question"]
+
+        kanjiList = []
+        for (const [key, _] of Object.entries(dict)){
+            kanjiList.push(key);
+        }
+    })
 }
+
 
 function checkAnswer(e) {
     question = document.getElementById("kanji-question")
@@ -29,15 +28,57 @@ function checkAnswer(e) {
 }
 
 
-function pickQuestion(e) {
+function pickQuestion() {
+    questionColor = document.querySelector(".kanji-question-gray")
+    questionColor.style.backgroundColor = "#444648"
+    question = document.getElementById("kanji-question")
+    answer = document.getElementById("kanji-answer")
+    randomElement = kanjiList[Math.floor(Math.random() * kanjiList.length)]
+    question.textContent = randomElement
+    answer.textContent = dict[randomElement]
+    document.getElementById("submit-answer").value = ""
+}
+
+function KeyPressPickQuestion(e) {
     if (e.key === "Enter" || e.key === " "){
-        question = document.getElementById("kanji-question")
-        randomElement = kanjiList[Math.floor(Math.random() * kanjiList.length)]
-        question.textContent = randomElement
-        document.getElementById("submit-answer").value = ""
+        pickQuestion()
+    }
+}
+let keysPressed = {};
+function KeyPressFetchNewQuestion(e) {
+    if (e.key === "Shift"){
+        createQuestion().then(pickQuestion)
     }
 }
 
-document.getElementById("submit-answer").addEventListener("input", checkAnswer)
+let keyPressed = {}
+function showAnswer(e) {
+    keyPressed[e.key] = true
+    if (keyPressed["Alt"] && e.key === "ArrowUp"){
+        answerColor = document.querySelector(".submit-answer")
+        answerColor.style.color = "#000"
+    }
+}
 
-window.addEventListener("keypress", pickQuestion)
+function hideAnswer(e) {
+    if (keyPressed["Alt"] && e.key === "ArrowDown"){
+        answerColor = document.querySelector(".submit-answer")
+        answerColor.style.color = "#fff"
+    }
+}
+
+function onloadFunction() {
+    createQuestion().then(pickQuestion)
+}
+
+document.getElementById("submit-answer").addEventListener("input", checkAnswer)
+window.addEventListener("keypress", KeyPressPickQuestion)
+window.addEventListener("keydown", KeyPressFetchNewQuestion)
+document.addEventListener('keyup', (event) => {
+    delete keysPressed[event.key];
+ });
+window.addEventListener("keydown", showAnswer)
+window.addEventListener("keydown", hideAnswer)
+
+
+window.onload = onloadFunction()
