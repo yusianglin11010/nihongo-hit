@@ -1,0 +1,20 @@
+version: '2'
+
+services:
+  web:
+    image: nihon-hitter-fe
+    ports:
+      - 8000:8000
+    networks:
+      - mynet
+    command: http-server -p 8000
+  server:
+    image: nihon-hitter-be
+    ports: 
+      - 8080:8080
+    networks:
+      - mynet
+    
+networks:
+  mynet:
+    driver: bridge

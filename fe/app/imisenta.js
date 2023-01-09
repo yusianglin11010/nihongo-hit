@@ -4,7 +4,7 @@ let kanjiList = []
 let imiList = []
 
 async function createQuestion() {
-    await axios.get('http://localhost:8080/imi-question')
+    await axios.get('server:8080/imi-question')
     .then(function(response, data) {
         dict = response.data["question"]
 
