@@ -2,7 +2,7 @@ let dict = {}
 let kanjiList = []
 
 async function createQuestion() {
-    await fetch('http://35.194.25.207:8080/kanji-question')
+    await fetch('https://www.nekosekai.com/kanji-question')
     .then((response) => {
         return response.json()
     }).then((jsonData) => {
