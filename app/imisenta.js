@@ -4,10 +4,11 @@ let kanjiList = []
 let imiList = []
 
 async function createQuestion() {
-    await axios.get('server:8080/imi-question')
-    .then(function(response, data) {
-        dict = response.data["question"]
-
+    await fetch('http://35.194.25.207:8080/imi-question')
+    .then((response) => {
+        return response.json()
+    }).then((jsonData) => {
+        dict = jsonData["question"]
         kanjiList = []
         imiList = []
         for (const [kanji, imi] of Object.entries(dict)){
@@ -16,7 +17,6 @@ async function createQuestion() {
 
         }
     })
-    console.log(dict, imiList)
 }
 
 let a = document.getElementById("senta-a")

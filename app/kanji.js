@@ -2,10 +2,11 @@ let dict = {}
 let kanjiList = []
 
 async function createQuestion() {
-    await axios.get('server:8080/kanji-question')
-    .then(function(response, data) {
-        dict = response.data["question"]
-
+    await fetch('http://35.194.25.207:8080/kanji-question')
+    .then((response) => {
+        return response.json()
+    }).then((jsonData) => {
+        dict = jsonData["question"]
         kanjiList = []
         for (const [key, _] of Object.entries(dict)){
             kanjiList.push(key);
