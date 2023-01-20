@@ -4,7 +4,7 @@ let kanjiList = []
 let imiList = []
 
 async function createQuestion() {
-    await fetch('https://www.nekosekai.com/imi-question')
+    await fetch('https://nekosekai.com/nihon-hitter/kanji-question')
     .then((response) => {
         return response.json()
     }).then((jsonData) => {
