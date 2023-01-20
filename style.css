@@ -7,12 +7,13 @@
     border-right: 0;
     border-left: 0;
     border-top: 0;
-    border-color: #888888;
     text-align: center;
     width: 400px;
     height: 100px;
     font-size: 28px;
     outline: none;
+    background-color: #444648;
+    color: #fff;
 }
 
 .submit-answer {
@@ -34,8 +35,8 @@
 }
 
 .home-image {
-    max-width: 1169px;
-    max-height: 1000px;
+    width: 400px;
+    height: 300px;
 
 }
 
@@ -46,8 +47,31 @@
 .senta-button {
     margin: 5px;
     font-size: 36px;
+    border-color: #fff;
+    color: #fff;
+}
+
+.senta-button:hover {
+    background-color: #444648;
+    border-color: #fff;
 }
 
 .navbar-brand-customer {
     margin: 5px;
+}
+
+.main-col {
+    background-color: #444648;
+    height: 50em;
+    width: 100%;
+}
+
+.welcome-col {
+    text-align: center;
+    margin: 10px;
+}
+
+.welcome-text {
+    font-size: 32px;
+    color: #bbb
 }
