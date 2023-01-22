@@ -52,21 +52,19 @@ function KeyPressFetchNewQuestion(e) {
     }
 }
 
-let keyPressed = {}
+show = -1
 function showAnswer(e) {
-    keyPressed[e.key] = true
-    if (keyPressed["Alt"] && e.key === "ArrowUp"){
+    if (e.key === "Alt"){
         answerColor = document.querySelector(".submit-answer")
-        answerColor.style.color = "#444648"
+        if (show === -1){
+            answerColor.style.color = "#fff"
+        }else {
+            answerColor.style.color = "#444648"
+        }
+        show *= -1
     }
 }
 
-function hideAnswer(e) {
-    if (keyPressed["Alt"] && e.key === "ArrowDown"){
-        answerColor = document.querySelector(".submit-answer")
-        answerColor.style.color = "#fff"
-    }
-}
 
 function onloadFunction() {
     createQuestion().then(pickQuestion)
@@ -75,11 +73,8 @@ function onloadFunction() {
 document.getElementById("submit-answer").addEventListener("input", checkAnswer)
 window.addEventListener("keypress", KeyPressPickQuestion)
 window.addEventListener("keydown", KeyPressFetchNewQuestion)
-document.addEventListener('keyup', (event) => {
-    delete keysPressed[event.key];
- });
+
 window.addEventListener("keydown", showAnswer)
-window.addEventListener("keydown", hideAnswer)
 
 
 window.onload = onloadFunction()
