@@ -75,3 +75,19 @@
     font-size: 32px;
     color: #bbb
 }
+
+.empty-blank {
+    height: 400px;
+}
+
+.hint {
+    text-align: center;
+    color: #fff;
+}
+
+.key {
+    background-color: #646669;
+    border-radius: 0.3rem;
+    padding: .1rem .3rem;
+}
+

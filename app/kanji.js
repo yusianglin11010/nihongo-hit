@@ -57,7 +57,7 @@ function showAnswer(e) {
     keyPressed[e.key] = true
     if (keyPressed["Alt"] && e.key === "ArrowUp"){
         answerColor = document.querySelector(".submit-answer")
-        answerColor.style.color = "#000"
+        answerColor.style.color = "#444648"
     }
 }
 
