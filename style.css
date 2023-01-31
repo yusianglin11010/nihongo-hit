@@ -1,3 +1,6 @@
+body {
+    background-color: #444648;
+}
 .problem-font {
     font-size: 156px;
     color: #888888;
@@ -9,8 +12,8 @@
     border-top: 0;
     text-align: center;
     width: 400px;
-    height: 100px;
-    font-size: 28px;
+    /* height: 100px; */
+    font-size: 24px;
     outline: none;
     background-color: #444648;
     color: #fff;
@@ -19,7 +22,8 @@
 .submit-answer {
     text-align: center;
     color: #444648;
-    margin: 10px;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
 .kanji-question-gray {
@@ -35,9 +39,8 @@
 }
 
 .home-image {
-    width: 400px;
-    height: 300px;
-    border-radius: 10px;
+    width: 40vh;
+    height: 30vh;
 }
 
 .senta-row {
@@ -45,7 +48,7 @@
 }
 
 .senta-button {
-    margin: 5px;
+    /* margin: 5px; */
     font-size: 36px;
     border-color: #fff;
     color: #fff;
@@ -61,9 +64,14 @@
 }
 
 .main-col {
-    background-color: #444648;
-    height: 50em;
-    width: 100%;
+    height: 10vh;
+    /* background-color: #444648; */
+}
+
+.main-container {
+    /* background-color: #444648; */
+    /* background-size: cover; */
+    /* height: 1280px; */
 }
 
 .welcome-col {
@@ -77,17 +85,31 @@
 }
 
 .empty-blank {
-    height: 200px;
+    height: 300%;
 }
 
 .hint {
     text-align: center;
     color: #fff;
+    font-size: 14px;
+}
+
+.hint-text{
+    margin-bottom: 0.4em;
 }
 
 .key {
     background-color: #646669;
     border-radius: 0.3rem;
-    padding: .1rem .3rem;
+    padding: .1rem .5rem;
+    margin-bottom: 10px;
 }
 
+.nav-text {
+    opacity: .5;
+}
+
+.nav-text:hover {
+    opacity: .7;
+    transition: opacity .5s;
+}
